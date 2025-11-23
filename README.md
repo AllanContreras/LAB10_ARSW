@@ -39,8 +39,18 @@ creamos un Function App
 4. Dirijase al portal de Azure y pruebe la function.
 
 ![](images/part3/part3-test-function.png)
+ - LO QUE REALIZAMOS
+   Pobamos la funcion en el portal de azure
+   <img width="1571" height="876" alt="image" src="https://github.com/user-attachments/assets/845f2e11-7905-4f70-9f8b-10f2a9d23512" />
+
 
 5. Modifique la coleción de POSTMAN con NEWMAN de tal forma que pueda enviar 10 peticiones concurrentes. Verifique los resultados y presente un informe.
+- Se modifica la colección de POSTMAN con NEWMAN de tal forma que pueda enviar 10 peticiones concurrentes en el archivo Fibonacci.postman_collection.json
+  - lo corremos
+ 
+     ```newman run Fibonacci.postman_collection.json -n 10```
+    
+    <img width="842" height="447" alt="image" src="https://github.com/user-attachments/assets/81922573-e8c8-4401-8aad-f311b1f29cb8" />
 
 6. Cree una nueva Function que resuleva el problema de Fibonacci pero esta vez utilice un enfoque recursivo con memoization. Pruebe la función varias veces, después no haga nada por al menos 5 minutos. Pruebe la función de nuevo con los valores anteriores. ¿Cuál es el comportamiento?.
 
