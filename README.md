@@ -53,14 +53,88 @@ creamos un Function App
     <img width="842" height="447" alt="image" src="https://github.com/user-attachments/assets/81922573-e8c8-4401-8aad-f311b1f29cb8" />
 
 6. Cree una nueva Function que resuleva el problema de Fibonacci pero esta vez utilice un enfoque recursivo con memoization. Pruebe la función varias veces, después no haga nada por al menos 5 minutos. Pruebe la función de nuevo con los valores anteriores. ¿Cuál es el comportamiento?.
+```java
+ function fiboM(n, M) {
+ return n <= 1 ? bigInt(n) : fiboMemo(n - 1, M).add(fiboMemo(n - 2, M));
+}
+
+function fiboMemo(n, M) {
+    if (M[n] !== undefined) {
+        return M[n];
+    }
+    M[n] = fiboM(n, M);
+    return M[n];
+}
+```
+- Se relizan pruebas con los números 1000, 10000 y 50000
+- 1000
+   
+<img width="837" height="451" alt="image" src="https://github.com/user-attachments/assets/29be06b6-02c8-4d65-a919-c36957313197" />
+- 10000
+  <img width="835" height="447" alt="image" src="https://github.com/user-attachments/assets/b577e1db-ff5e-49fc-93ed-8a34d92f7d19" />
+- 50000
+<img width="846" height="447" alt="image" src="https://github.com/user-attachments/assets/47b3d1ff-5fc7-4150-b2b2-ef130afcb4ee" />
+- Se revisan las métricas de la función en el portal de Azure
+<img width="1451" height="510" alt="image" src="https://github.com/user-attachments/assets/045e8b21-a846-45ba-af9e-1bc4e6f56f8c" />
+- Con los valores muy grandes hay error de recursión
+
+<img width="1373" height="477" alt="image" src="https://github.com/user-attachments/assets/16ebfd34-6db2-4f95-be92-ab9a423ff6c8" />
 
 **Preguntas**
 
 * ¿Qué es un Azure Function?
+  
+  ```text
+  Azure Functions es un servicio en la nube disponible a petición que proporciona toda la infraestructura y los recursos,
+   que se actualizan continuamente, necesarios para ejecutar las aplicaciones. Céntrese en el código que más le importa,
+   en el lenguaje más productivo, y Functions se encargará del resto.
+  Functions proporciona proceso sin servidor para Azure. Functions también se puede usar para crear API web, respondera
+  los cambios en las bases de datos, procesar secuencias de IoT,
+   administrar colas de mensajes, etc. Azure Functions es una solución sin servidor que le permite escribir menos código,
+  mantener menos infraestructura y ahorrar costos. En lugar de preocuparse por implementar y mantener servidores,
+  la infraestructura en la nube proporciona todos los recursos actualizados necesarios para mantener las aplicaciones en ejecución.
+   ```
 * ¿Qué es serverless?
+  ```text
+  La computación sin servidor (o serverless para abreviar) es un modelo de ejecución
+  en el que el proveedor en la nube (AWS, Azure o Google Cloud) es responsable de ejecutar un fragmento de código mediante
+   la asignación dinámica de los recursos.
+  ```
+  
 * ¿Qué es el runtime y que implica seleccionarlo al momento de crear el Function App?
+ ```text
+El runtime de Azure Functions es el componente que ejecuta el código. Cuando se crea una Function App,
+ seleccionar el runtime determina el lenguaje de programación que se puede usar y las versiones de dicho
+ lenguaje que son compatibles.
+Por ejemplo, si se elige el runtime de .NET, se podrá escribir funciones en C#, mientras que si se elige
+ el runtime de Node.js, se podrá usar JavaScript.
+Además, la versión del runtime que se elija puede afectar a las características y a la compatibilidad con ciertas
+bibliotecas y frameworks.
+ ```
 * ¿Por qué es necesario crear un Storage Account de la mano de un Function App?
+```text 
+Es necesario para el almacenamiento de archivos de la aplicación, los disparadores y enlaces, el escalado y
+ durabilidad y los registros de ejecuciones de funciones
+```
 * ¿Cuáles son los tipos de planes para un Function App?, ¿En qué se diferencias?, mencione ventajas y desventajas de cada uno de ellos.
+  ```text
+  
+   - Plan Consumo: Cuando se usa el plan de consumo, las instancias del host de Azure Functions se agregan y
+   quitan de forma dinámica según el número de eventos entrantes. El plan de consumo es la  z de hospedaje completamente
+  sin servidor de Azure Functions.
+     - Plan Elastic Premium: Functions es una opción de hospedaje de escalado dinámico para las aplicaciones de funciones.
+  
+     ```
 * ¿Por qué la memoization falla o no funciona de forma correcta?
+```text
+El llamado recursivo puede ocasionar un desbordamiento de pila, y al inicio no se tienen valores en memoria por lo
+ que es necesario calcularlos.
+```
 * ¿Cómo funciona el sistema de facturación de las Function App?
-* Informe
+```text
+Se factura por el tiempo de ejecución de la función, el consumo de memoria y el número de ejecuciones.
+El plan de consumo de Azure Functions se factura en función del consumo de recursos y las ejecuciones por segundo.
+ ```
+
+
+  
